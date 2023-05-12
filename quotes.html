@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quote Widget</title>
+  </head>
+  <body>
+    <div id="quote-widget">
+      Click the button for a random quote!
+    </div>
+    <button id="quote-button" onclick="generateQuote()">New Quote</button>
+
+    <script>
+      const quotes = [
+        "The best way to predict the future is to create it. - Peter Drucker",
+        "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+        "Believe you can and you're halfway there. - Theodore Roosevelt",
+        "Try not to become a man of success. Rather become a man of value. - Albert Einstein",
+        "The only way to do great work is to love what you do. - Steve Jobs",
+        "Everything you can imagine is real. - Pablo Picasso",
+        "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle. - Christian D. Larson",
+        "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+        "You miss 100% of the shots you don't take. - Wayne Gretzky",
+        "Happiness is not something ready made. It comes from your own actions. - Dalai Lama",
+      ];
+
+      function generateQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const randomQuote = quotes[randomIndex];
+        const quoteWidget = document.getElementById("quote-widget");
+        quoteWidget.innerHTML = randomQuote;
+        quoteWidget.style.fontSize = "20px";
+        quoteWidget.style.fontStyle = "italic";
+        quoteWidget.style.textAlign = "center";
+      }
+    </script>
+  </body>
+</html>
