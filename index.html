@@ -40,7 +40,7 @@
     </div>
 
     <script>
-        const apiKey = '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';
+        const apiKey = 'YOUR_API_KEY';
         const baseUrl = 'https://api.openai.com/v1/chat/completions';
 
         let conversation = [];
@@ -63,7 +63,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${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}`
+                        'Authorization': `Bearer ${apiKey}`
                     },
                     body: JSON.stringify({
                         messages: conversation
@@ -88,17 +88,52 @@
             document.getElementById('conversation-container').innerHTML = '';
         }
 
+        async function startConversation() {
+            conversation.push({
+                role: 'system',
+                content: 'You have initiated a new conversation.'
+            });
+
+            renderMessage('system', 'You have initiated a new conversation.');
+
+            const response = await fetch(baseUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    messages: conversation
+                })
+            });
+
+            const { choices } = await response.json();
+
+            const reply = choices[0].message.content;
+
+            conversation.push({
+                role: 'ai',
+                content: reply
+            });
+
+            renderMessage('ai', reply);
+        }
+
         function renderMessage(role, content) {
             const container = document.getElementById('conversation-container');
             const messageContainer = document.createElement('div');
-            const messageClass = role === 'user' ? 'user-message' : 'ai-message';
+            const messageClass = role === 'user' ? 'user-message' : (role === 'ai' ? 'ai-message' : 'system-message');
 
             messageContainer.className = `message-container ${messageClass}`;
             messageContainer.innerText = content;
 
             container.appendChild(messageContainer);
         }
+
+        // Start the conversation when the page loads
+        window.onload = startConversation;
     </script>
 </body>
 </html>
+
 
