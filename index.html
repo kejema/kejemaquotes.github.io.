@@ -1,24 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chatbot Demo</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>OpenAI Chat</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            font-family: Arial, sans-serif;
+        }
+
+        .message-container {
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            background-color: #e6f7ff;
+        }
+
+        .ai-message {
+            background-color: #f0f0f0;
+        }
+
+        .input-container {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="chatbox">
-      <div class="chatlog" id="chatlog">
-        <!-- Chat messages will be dynamically added here -->
-      </div>
-      <div class="input-container">
-        <label for="user-input">Message:</label>
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button id="send-button">Send</button>
-        <button id="clear-button">Clear History</button>
-      </div>      
+    <div class="container">
+        <h1>OpenAI Chat</h1>
+        <div id="conversation-container"></div>
+        <div class="input-container">
+            <input type="text" id="message-input" placeholder="Type your message" />
+            <button onclick="sendMessage()">Send</button>
+            <button onclick="clearConversation()">Clear</button>
+        </div>
     </div>
-  </div>
-  
-  <script src="script.js"></script>
+
+    <script>
+        const apiKey = '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';
+        const baseUrl = 'https://api.openai.com/v1/chat/completions';
+
+        let conversation = [];
+
+        async function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const message = messageInput.value.trim();
+
+            if (message !== '') {
+                conversation.push({
+                    role: 'user',
+                    content: message
+                });
+
+                renderMessage('user', message);
+
+                messageInput.value = '';
+
+                const response = await fetch(baseUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        messages: conversation
+                    })
+                });
+
+                const { choices } = await response.json();
+
+                const reply = choices[0].message.content;
+
+                conversation.push({
+                    role: 'ai',
+                    content: reply
+                });
+
+                renderMessage('ai', reply);
+            }
+        }
+
+        function clearConversation() {
+            conversation = [];
+            document.getElementById('conversation-container').innerHTML = '';
+        }
+
+        function renderMessage(role, content) {
+            const container = document.getElementById('conversation-container');
+            const messageContainer = document.createElement('div');
+            const messageClass = role === 'user' ? 'user-message' : 'ai-message';
+
+            messageContainer.className = `message-container ${messageClass}`;
+            messageContainer.innerText = content;
+
+            container.appendChild(messageContainer);
+        }
+    </script>
 </body>
 </html>
+
