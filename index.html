@@ -247,6 +247,7 @@
         "Living this life to the best of my ability channeling energy into my thoughts until it's symetry.",
         "Life is set up to be difficult, make it less difficult.",
         "Take luck out of the equation.",
+        "A good segway is always important.",
         "Don't just say yeah, and don't just say no",
         "Life, Bliss, ecstasy, and euphoria, as we all live in this Emporia",
         "Celebrate the bends in the river.",
@@ -258,20 +259,25 @@
         "The complexity is up to you.",
         "Ya sistas ass.",
         "Don't use what you know to get what you want, if it's not in the best interest of others'.",
-      ]
-
+      ];
+      
+      let recentIndices = []; // Initialize an empty array to hold recent indices
+        
       function getRandomQuote() {
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        return quotes[randomIndex];
-      }
-
-      const quoteWidget = document.getElementById("quote-widget");
-      const quoteButton = document.getElementById("quote-button");
-
-      quoteButton.addEventListener("click", function () {
-        const randomQuote = getRandomQuote();
-        quoteWidget.innerHTML = randomQuote;
-      });
-    </script>
-  </body>
-</html>
+        const availableIndices = quotes.map((_, index) => index).filter(index => !recentIndices.includes(index));
+        if (availableIndices.length === 0) {
+          // If all quotes have been displayed, reset the list of recent indices
+          recentIndices = [];
+          }
+          
+          const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+          recentIndices.push(randomIndex); // Add the index to the list of recent indices
+          const quoteWidget = document.getElementById("quote-widget");
+          quoteWidget.innerText = quotes[randomIndex];
+        }
+        
+        const quoteButton = document.getElementById("quote-button");
+        quoteButton.addEventListener("click", getRandomQuote);
+      </script>
+    </body>
+  </html>
