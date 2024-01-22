@@ -55,12 +55,68 @@
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="shower-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="shower-finished"></label>
+        Shower
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="light-candle-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="light-candle-finished"></label>
+        Light Candle
       </div>
-      <!-- Add more task items as needed -->
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="morning-pages-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="morning-pages-finished"></label>
+        Morning Pages
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="prepare-clean-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="prepare-clean-finished"></label>
+        Prepare, Clean, Organize, Research & Implement
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="cook-eat-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="cook-eat-finished"></label>
+        Cook / Eat / Drink
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="trade-invest-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="trade-invest-finished"></label>
+        Trade / Invest
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="business-faq-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="business-faq-finished"></label>
+        Business FAQ
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="acquisition-process-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="acquisition-process-finished"></label>
+        Acquisition Process
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="work-on-business-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="work-on-business-finished"></label>
+        Work on business (The Process)
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="stream-planning-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="stream-planning-finished"></label>
+        Stream Planning
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="stream-fun-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="stream-fun-finished"></label>
+        Stream - Advocate, Have Fun With Friends & Guildies
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="post-content-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="post-content-finished"></label>
+        Post Content
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="charge-chair-phone-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="charge-chair-phone-finished"></label>
+        Charge Chair, Phone
+      </div>
 
       <p>Last Checked: <span id="last-checked"></span></p>
     </div>
@@ -318,7 +374,17 @@
         // Update checkbox status and time passed for each task
         updateCheckboxStatus("shower-started", "shower-finished");
         updateCheckboxStatus("light-candle-started", "light-candle-finished");
-        // Add more tasks as needed
+        updateCheckboxStatus("morning-pages-started", "morning-pages-finished");
+        updateCheckboxStatus("prepare-clean-started", "prepare-clean-finished");
+        updateCheckboxStatus("cook-eat-started", "cook-eat-finished");
+        updateCheckboxStatus("trade-invest-started", "trade-invest-finished");
+        updateCheckboxStatus("business-faq-started", "business-faq-finished");
+        updateCheckboxStatus("acquisition-process-started", "acquisition-process-finished");
+        updateCheckboxStatus("work-on-business-started", "work-on-business-finished");
+        updateCheckboxStatus("stream-planning-started", "stream-planning-finished");
+        updateCheckboxStatus("stream-fun-started", "stream-fun-finished");
+        updateCheckboxStatus("post-content-started", "post-content-finished");
+        updateCheckboxStatus("charge-chair-phone-started", "charge-chair-phone-finished");
       }
 
       function updateCheckboxStatus(startedCheckboxId, finishedCheckboxId) {
