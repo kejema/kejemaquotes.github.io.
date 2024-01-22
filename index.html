@@ -6,7 +6,6 @@
     <style>
       body {
         background-color: #0e0e0e;
-        font-family: Arial, sans-serif;
       }
       #quote-widget {
         font-size: 36px;
@@ -28,28 +27,6 @@
         border-radius: 4px;
         cursor: pointer;
       }
-      #checklist {
-        margin-top: 20px;
-        text-align: center;
-        color: white;
-      }
-      .task-item {
-        margin-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .checkbox-label {
-        margin-right: 10px;
-        color: white;
-      }
-      .checkbox-label input {
-        margin-right: 5px;
-      }
-      .timestamp {
-        color: #999;
-        font-size: 12px;
-      }
     </style>
   </head>
   <body>
@@ -57,392 +34,250 @@
       Click for a random quote
     </div>
     <button id="quote-button">New Quote</button>
-    <div id="checklist">
-      <h2>Task List</h2>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="shower-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="shower-finished"></label>
-        Shower
-        <div class="timestamp" id="shower-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="light-candle-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="light-candle-finished"></label>
-        <div class="timestamp" id="light-candle-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="morning-pages-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="morning-pages-finished"></label>
-        <div class="timestamp" id="morning-pages-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="prepare-clean-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="prepare-clean-finished"></label>
-        <div class="timestamp" id="prepare-clean-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="cook-eat-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="cook-eat-finished"></label>
-        <div class="timestamp" id="cook-eat-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="trade-invest-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="trade-invest-finished"></label>
-        <div class="timestamp" id="trade-invest-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="business-faq-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="business-faq-finished"></label>
-        <div class="timestamp" id="business-faq-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="acquisition-process-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="acquisition-process-finished"></label>
-        <div class="timestamp" id="acquisition-process-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="work-on-business-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="work-on-business-finished"></label>
-        <div class="timestamp" id="work-on-business-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="stream-planning-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="stream-planning-finished"></label>
-        <div class="timestamp" id="stream-planning-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="stream-fun-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="stream-fun-finished"></label>
-        <div class="timestamp" id="stream-fun-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="post-content-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="post-content-finished"></label>
-        <div class="timestamp" id="post-content-timestamp"></div>
-      </div>
-      <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="charge-chair-phone-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="charge-chair-phone-finished"></label>
-        <div class="timestamp" id="charge-chair-phone-timestamp"></div>
-      </div>
-
-      <p>Last Checked: <span id="last-checked"></span></p>
-    </div>
     <script>
       const quotes = [
-      "Home is where you make it!!",
-      "Create your world each new day!",
-      "See the bigger picture!",
-      "Live a life of indeperence!",
-      "Embrace the difficult times.",
-      "Some progress is better than none.",
-      "Live through another person for a change.",
-      "Just be glad it worked out and make it last!",
-      "Helping someone, will change the world for them.",
-      "Start where you are at.",
-      "Self-help works, because if it diddn't everyone would screwed.",
-      "Angels can fly, because they take themselves lightly.",
-      "Your desire to change must be greater.",
-      "Be the cream of the crop that rise to the top.",
-      "Your work is your world.",
-      "Not much is needed to be happy.",
-      "Change the way you look at things.",
-      "What would you regret not doing today?",
-      "What should you be angry about?",
-      "It all starts from nothing and we make it into something.",
-      "Realize your self worth.",
-      "If you don't play the game of life you lose.",
-      "You are all that you have.",
-      "You gotta make changes for it to happen.",
-      "Value your intelligence.",
-      "Focus on the possibilities.",
-      "Just keep it on the real.",
-      "Express yourself.",
-      "Be around the people that give your world assurance.",
-      "Bet on yourself.",
-      "How far will you go.",
-      "It's easier to fall from grace than to live a purely chaotic lifestyle.",
-      "All things start from somewhere every day.",
-      "Measure your accountability with yesterdays successes.",
-      "The greatest game in life, is creating the life you want.",
-      "See yourself driving.",
-      "Reassure yourself.",
-      "All you have to do is apply yourself one step at a time.",
-      "Focus on the good outcomes.",
-      "Never paint the full picture of Life. Everything could be at most an inspiration, you can not be the artist of Gods design.",
-      "The moment you stop caring about others opinions, is when you learn to trust yourself with your future.",
-      "The worst position to find yourself in is with no family, friends, time, or money.",
-      "Some people will make that sacrifice for you, but you have to sacrifice yourself for them too.",
-      "Until you learn to see yourself, you cant love another.",
-      "Blessed is thee who is kind and balanced. Who's honoring their world. Seeing, speaking, and listening with the reflection of their love & mindful of their spirit. Blessings are a fruit when aligning our intentions with our actions.",
-      "Above anything, they will admire you for your ambitions.",
-      "Love the chance, of living a life worth living.",
-      "Some people will admire the work you put in.",
-      "Be happy with what you got.",
-      "It's okay to feel powerless at times, but it's not okay to do nothing about it.",
-      "Focus on what's useful to you.",
-      "Fight for what your capable of doing.",
-      "Always be polite.",
-      "There's always something to learn, do or say.",
-      "The price of ignorance is never realised until it's too late.",
-      "Some people know more and do certain things better than others, so own up to your life, your opportunities and chance to live a full life each day.",
-      "Where does the time go? Fly like the arrow of God.",
-      "It's always a perfect time to keep going after you've started.",
-      "Be outside your box.",
-      "Teach what you learn.",
-      "Let every step be a celebration of existence.",
-      "Blank spaces on your calendar is the devils playground.",
-      "If you wanna be great, try counting your blessings.",
-      "Opportunities multiply if siezed, and die if neglected.",
-      "Never push things, instead accept what happens as you move forward.",
-      "When somebody believes in something affirm their beliefs, because their beliefs are everything to be cherished.",
-      "Focus on your mind, body, spirit, and what you can make consistent.",
-      "Talent hits a target no one else can hit, and genius hits a target no one else can see.",
-      "Reach for the sky cause tomorrow may never come.",
-      "Your body does the easy job of living, and your mind does the hard work of life.",
-      "Perseverance is a culmination of your values and is truly a fine art.",
-      "Be stuck in survival, it's a natural state.",
-      "Success boils down to just doing the most obvious thing, for an extended periods of time.",
-      "Never stop providing meaning.",
-      "Focus on what boosts your energy.",
-      "Steer your ship.",
-      "Declare war on your actions every day.",
-      "Just because you feel something, doesn't mean it should be the realist thing.",
-      "Be the writer, artist, actor and director.",
-      "The only limit to your potential is the one you set for yourself.",
-      "Be the champion of your story.",
-      "Outlearn, Outwork, Outlast, Contemplate, & Reminisce.",
-      "Life is abundant, what would the abundance do for you?",
-      "Magic is the ability to change your reality according to your will.",
-      "You can count the seeds in the Apple, but you can't count the Apples in the seed.",
-      "Strive for less to gain the more.",
-      "What do you want your efforts to look like?",
-      "No pain no gain.",
-      "If you could go the extra distance.",
-      "They can't keep a good dog down.",
-      "If you stay ready then you don't have to get ready.",
-      "Time isn't what's valuable, it's our perception of it.",
-      "Focus on the process.",
-      "Prepare for the day ahead.",
-      "How can you be entertaining?",
-      "Everyone should live by a code and actuate what they can see.",
-      "The only path to success is the belief that everything gets better over time.",
-      "Whatever tomorrow brings, choose water over wine.",
-      "Don't let it all be for nothing.",
-      "Find your place of tranquility.",
-      "It's only your fault if you let something happen.",
-      "Only blame yourself if you do not see more than one path.",
-      "Double-Quick, only now is for certain.",
-      "Try to turn the tide of today.",
-      "Recall what you have learned.",
-      "Do it if your going to.",
-      "Life was created with each of your needs in mind.",
-      "Act like someone is working to taking it all away.",
-      "Upgrade your environment, because your environment upgrades you.",
-      "Keep it long and sweet.",
-      "The more you learn and practice, the more you grow.",
-      "Commit to the dream.",
-      "Be able to live off of your accomplishments.",
-      "Become the motivation.",
-      "May whatever you ask for in confidence be granted to you.",
-      "Creativity is taking something that normally doesn't belong and making it fit perfectly with whatever you applied it too.",
-      "What is relevant to what your currently doing?",
-      "The mind is a machine to reach the light.",
-      "Travel the world after it's all said and done.",
-      "Seek discomfort.",
-      "Set your own bar.",
-      "To be unacquainted with one's character is to deny oneself the richness of authenticity.",
-      "The calmer you are, the more clarity you have.",
-      "Remind others of who you are, and never let the world define you.",
-      "There's a whole world out there to explore.",
-      "Life is a one-time offer each day.",
-      "Your not a failure until you quit.",
-      "Did I do enough?",
-      "Your direction is more important than your speed.",
-      "To be the best, you got to be able to tame your worst.",
-      "Make a habit of winning the day.",
-      "Can you see yourself?",
-      "Wander in darkness to find the light.",
-      "Be strong because you endured.",
-      "No matter what it is that you do, there will always be a measure of pain, make it worth it.",
-      "As long as you tried, so be it.",
-      "If you know what you want, why can't you have it?",
-      "The tougher things you do, the more confidence you'll have.",
-      "Trust the process, everything happens at the right time.",
-      "Make life an easier challenge on you.",
-      "The root of all suffering, is the attachment we have.",
-      "What have they learned?",
-      "Accept what you cannot change.",
-      "No one will live out your life for you even though you need help to live.",
-      "If you can't control your life and mind, something else will.",
-      "I come from a place where all potentials and possibilities exist.",
-      "Become an independent person that gets a lot done by themself.",
-      "Carry yourself through their eyes if thats what it takes.",
-      "The Imagination is to be trained, to do real magic.",
-      "If you don't know how to ask, then you wont know how to get.",
-      "Do what you love really well.",
-      "Develope a discipline like no other.",
-      "Only fix what needs fixin.",
-      "Be your own role model.",
-      "Flip the script.",
-      "Your entitled to the work, not the fruits of the work.",
-      "'Perfection can also be spealt 'Paralysis, just do it at your pace.",
-      "The reason people work so hard is because there's so much to work for.",
-      "Every day your either losing ground or gaining ground.",
-      "It takes everything to stand alone.",
-      "If you quit before or after, then you have strayed from becoming the champion, always.",
-      "If you think the price of success is to high, wait until you see the check of regret.",
-      "All you have is the time you spend alone or share together, so pick the one for the moment.",
-      "The calm must come before the storm.",
-      "there is no room for trepidation in our choices.",
-      "Gaining something is maintaining it.",
-      "Everyday is a new day to start off better.",
-      "If you can return the favor, do it.",
-      "Prove to everyone they don't know you.",
-      "You learn more from pain, than you ever will from any pleasure.",
-      "If you really want to, then why aren't you.",
-      "Rhyme with more reason, more often.",
-      "Breathe.",
-      "You are more than you think you are.",
-      "Believe in the extraordinary.", 
-      "It's time to wake the fuck up and give the pain a purpose.",
-      "Push your limits from yesterday, that is true accountability.",
-      "It's time to create your future.",
-      "Your lessons are repeated until they are learned.",
-      "Do what everything does, keep movin.",
-      "He will bless those who blesses others and turns the world into a heaven on earth.",
-      "Your energy is the lightning that powers your life.",
-      "Give yourself the energy and willpower to do what you need to do.",
-      "Plan all the way to the end.",
-      "Happiness is not the same as a long lasting fulfillment, true happiness takes suffering, pain, time and effort.",
-      "You can never express too much gratitude for the life that you live.",
-      "Out of the thousands of people you have influenced in your life positively, and you are too shy to put yourself out there?",
-      "Earn your dopamine through this struggle we call life.",
-      "There's only so much to life, be patient and take your time.",
-      "Cheap thrills is neglect to true fulfillment.",
-      "Align personal desires with the greater good.",
-      "Give a purpose to things.",
-      "What will happen if you dont do it?",
-      "You have to believe in something for it to work out for you.",
-      "How can you improve this at all?",
-      "Death is not in the future, it is in the moment.",
-      "Once you fearlessly live, life becomes limitless.",
-      "Poverty is always wanting more.",
-      "If you want to have a great life you have to make great choices.",
-      "What's all the work you could be doing?",
-      "Realize the effects of the choices you make.",
-      "Who are you right now?",
-      "Emulate others expressions to better understand them.",
-      "Work harder on yourself than you do on your job.",
-      "Persistence and determination are omnipotent qualities that nobody in this world can match, not a genius, talented person, or even well educated people.",
-      "The only certainty is in the present moment.",
-      "Living this life to the best of your ability channeling energy into your life until it's symetry.",
-      "Life is set up to be difficult, make it less difficult.",
-      "Give it power by keeping it to urself.",
-      "Nothing is better than zero regrets.",
-      "Your the first line of defense.",
-      "Why aren't you living the life you want?",
-      "Behind every successful person is a very simple lifestyle, wardrobe, and diet.",
-      "Be as great of a man as your father.",
-      "Try ordering a pizza and watching a movie or t.v show.",
-      "Take it easy on your family, friends, and caretakers.",
-      "Be the arichitect of your own happiness and well being.",
-      "The answer lies infront of you, to gain inspiration, ideas and positive outcomes from.",
-      "Live life in the present moment and focus on what is, rather than what could be.",
-      "Today is your day.",
-      "Make luck a part of the equation with a happy go-lucky attitude.",
-      "What would be a good segway?",
-      "Some success is gained at a slow and steady pace.",      ];
-
+        "Home is where you make it!!",
+        "Create your world each new day!",
+        "See the bigger picture!",
+        "Live a life of indeperence!",
+        "Embrace the difficult times.",
+        "Some progress is better than none.",
+        "Live through another person for a change.",
+        "Just be glad it worked out and make it last!",
+        "Helping someone, will change the world for them.",
+        "Start where you are at.",
+        "Self-help works, because if it diddn't everyone would screwed.",
+        "Angels can fly, because they take themselves lightly.",
+        "Your desire to change must be greater.",
+        "Be the cream of the crop that rise to the top.",
+        "Your work is your world.",
+        "Not much is needed to be happy.",
+        "Change the way you look at things.",
+        "What would you regret not doing today?",
+        "What should you be angry about?",
+        "It all starts from nothing and we make it into something.",
+        "Realize your self worth.",
+        "If you don't play the game of life you lose.",
+        "You are all that you have.",
+        "You gotta make changes for it to happen.",
+        "Value your intelligence.",
+        "Focus on the possibilities.",
+        "Just keep it on the real.",
+        "Express yourself.",
+        "Be around the people that give your world assurance.",
+        "Bet on yourself.",
+        "How far will you go.",
+        "It's easier to fall from grace than to live a purely chaotic lifestyle.",
+        "All things start from somewhere every day.",
+        "Measure your accountability with yesterdays successes.",
+        "The greatest game in life, is creating the life you want.",
+        "See yourself driving.",
+        "Reassure yourself.",
+        "All you have to do is apply yourself one step at a time.",
+        "Focus on the good outcomes.",
+        "Never paint the full picture of Life. Everything could be at most an inspiration, you can not be the artist of Gods design.",
+        "The moment you stop caring about others opinions, is when you learn to trust yourself with your future.",
+        "The worst position to find yourself in is with no family, friends, time, or money.",
+        "Some people will make that sacrifice for you, but you have to sacrifice yourself for them too.",
+        "Until you learn to see yourself, you cant love another.",
+        "Blessed is thee who is kind and balanced. Who's honoring their world. Seeing, speaking, and listening with the reflection of their love & mindful of their spirit. Blessings are a fruit when aligning our intentions with our actions.",
+        "Above anything, they will admire you for your ambitions.",
+        "Love the chance, of living a life worth living.",
+        "Some people will admire the work you put in.",
+        "Be happy with what you got.",
+        "It's okay to feel powerless at times, but it's not okay to do nothing about it.",
+        "Focus on what's useful to you.",
+        "Fight for what your capable of doing.",
+        "Always be polite.",
+        "There's always something to learn, do or say.",
+        "The price of ignorance is never realised until it's too late.",
+        "Some people know more and do certain things better than others, so own up to your life, your opportunities and chance to live a full life each day.",
+        "Where does the time go? Fly like the arrow of God.",
+        "It's always a perfect time to keep going after you've started.",
+        "Be outside your box.",
+        "Teach what you learn.",
+        "Let every step be a celebration of existence.",
+        "Blank spaces on your calendar is the devils playground.",
+        "If you wanna be great, try counting your blessings.",
+        "Opportunities multiply if siezed, and die if neglected.",
+        "Never push things, instead accept what happens as you move forward.",
+        "When somebody believes in something affirm their beliefs, because their beliefs are everything to be cherished.",
+        "Focus on your mind, body, spirit, and what you can make consistent.",
+        "Talent hits a target no one else can hit, and genius hits a target no one else can see.",
+        "Reach for the sky cause tomorrow may never come.",
+        "Your body does the easy job of living, and your mind does the hard work of life.",
+        "Perseverance is a culmination of your values and is truly a fine art.",
+        "Be stuck in survival, it's a natural state.",
+        "Success boils down to just doing the most obvious thing, for an extended periods of time.",
+        "Never stop providing meaning.",
+        "Focus on what boosts your energy.",
+        "Steer your ship.",
+        "Declare war on your actions every day.",
+        "Just because you feel something, doesn't mean it should be the realist thing.",
+        "Be the writer, artist, actor and director.",
+        "The only limit to your potential is the one you set for yourself.",
+        "Be the champion of your story.",
+        "Outlearn, Outwork, Outlast, Contemplate, & Reminisce.",
+        "Life is abundant, what would the abundance do for you?",
+        "Magic is the ability to change your reality according to your will.",
+        "You can count the seeds in the Apple, but you can't count the Apples in the seed.",
+        "Strive for less to gain the more.",
+        "What do you want your efforts to look like?",
+        "No pain no gain.",
+        "If you could go the extra distance.",
+        "They can't keep a good dog down.",
+        "If you stay ready then you don't have to get ready.",
+        "Time isn't what's valuable, it's our perception of it.",
+        "Focus on the process.",
+        "Prepare for the day ahead.",
+        "How can you be entertaining?",
+        "Everyone should live by a code and actuate what they can see.",
+        "The only path to success is the belief that everything gets better over time.",
+        "Whatever tomorrow brings, choose water over wine.",
+        "Don't let it all be for nothing.",
+        "Find your place of tranquility.",
+        "It's only your fault if you let something happen.",
+        "Only blame yourself if you do not see more than one path.",
+        "Double-Quick, only now is for certain.",
+        "Try to turn the tide of today.",
+        "Recall what you have learned.",
+        "Do it if your going to.",
+        "Life was created with each of your needs in mind.",
+        "Act like someone is working to taking it all away.",
+        "Upgrade your environment, because your environment upgrades you.",
+        "Keep it long and sweet.",
+        "The more you learn and practice, the more you grow.",
+        "Commit to the dream.",
+        "Be able to live off of your accomplishments.",
+        "Become the motivation.",
+        "May whatever you ask for in confidence be granted to you.",
+        "Creativity is taking something that normally doesn't belong and making it fit perfectly with whatever you applied it too.",
+        "What is relevant to what your currently doing?",
+        "The mind is a machine to reach the light.",
+        "Travel the world after it's all said and done.",
+        "Seek discomfort.",
+        "Set your own bar.",
+        "To be unacquainted with one's character is to deny oneself the richness of authenticity.",
+        "The calmer you are, the more clarity you have.",
+        "Remind others of who you are, and never let the world define you.",
+        "There's a whole world out there to explore.",
+        "Life is a one-time offer each day.",
+        "Your not a failure until you quit.",
+        "Did I do enough?",
+        "Your direction is more important than your speed.",
+        "To be the best, you got to be able to tame your worst.",
+        "Make a habit of winning the day.",
+        "Can you see yourself?",
+        "Wander in darkness to find the light.",
+        "Be strong because you endured.",
+        "No matter what it is that you do, there will always be a measure of pain, make it worth it.",
+        "As long as you tried, so be it.",
+        "If you know what you want, why can't you have it?",
+        "The tougher things you do, the more confidence you'll have.",
+        "Trust the process, everything happens at the right time.",
+        "Make life an easier challenge on you.",
+        "The root of all suffering, is the attachment we have.",
+        "What have they learned?",
+        "Accept what you cannot change.",
+        "No one will live out your life for you even though you need help to live.",
+        "If you can't control your life and mind, something else will.",
+        "I come from a place where all potentials and possibilities exist.",
+        "Become an independent person that gets a lot done by themself.",
+        "Carry yourself through their eyes if thats what it takes.",
+        "The Imagination is to be trained, to do real magic.",
+        "If you don't know how to ask, then you wont know how to get.",
+        "Do what you love really well.",
+        "Develope a discipline like no other.",
+        "Only fix what needs fixin.",
+        "Be your own role model.",
+        "Flip the script.",
+        "Your entitled to the work, not the fruits of the work.",
+        "'Perfection can also be spealt 'Paralysis, just do it at your pace.",
+        "The reason people work so hard is because there's so much to work for.",
+        "Every day your either losing ground or gaining ground.",
+        "It takes everything to stand alone.",
+        "If you quit before or after, then you have strayed from becoming the champion, always.",
+        "If you think the price of success is to high, wait until you see the check of regret.",
+        "All you have is the time you spend alone or share together, so pick the one for the moment.",
+        "The calm must come before the storm.",
+        "there is no room for trepidation in our choices.",
+        "Gaining something is maintaining it.",
+        "Everyday is a new day to start off better.",
+        "If you can return the favor, do it.",
+        "Prove to everyone they don't know you.",
+        "You learn more from pain, than you ever will from any pleasure.",
+        "If you really want to, then why aren't you.",
+        "Rhyme with more reason, more often.",
+        "Breathe.",
+        "You are more than you think you are.",
+        "Believe in the extraordinary.", 
+        "It's time to wake the fuck up and give the pain a purpose.",
+        "Push your limits from yesterday, that is true accountability.",
+        "It's time to create your future.",
+        "Your lessons are repeated until they are learned.",
+        "Do what everything does, keep movin.",
+        "He will bless those who blesses others and turns the world into a heaven on earth.",
+        "Your energy is the lightning that powers your life.",
+        "Give yourself the energy and willpower to do what you need to do.",
+        "Plan all the way to the end.",
+        "Happiness is not the same as a long lasting fulfillment, true happiness takes suffering, pain, time and effort.",
+        "You can never express too much gratitude for the life that you live.",
+        "Out of the thousands of people you have influenced in your life positively, and you are too shy to put yourself out there?",
+        "Earn your dopamine through this struggle we call life.",
+        "There's only so much to life, be patient and take your time.",
+        "Cheap thrills is neglect to true fulfillment.",
+        "Align personal desires with the greater good.",
+        "Give a purpose to things.",
+        "What will happen if you dont do it?",
+        "You have to believe in something for it to work out for you.",
+        "How can you improve this at all?",
+        "Death is not in the future, it is in the moment.",
+        "Once you fearlessly live, life becomes limitless.",
+        "Poverty is always wanting more.",
+        "If you want to have a great life you have to make great choices.",
+        "What's all the work you could be doing?",
+        "Realize the effects of the choices you make.",
+        "Who are you right now?",
+        "Emulate others expressions to better understand them.",
+        "Work harder on yourself than you do on your job.",
+        "Persistence and determination are omnipotent qualities that nobody in this world can match, not a genius, talented person, or even well educated people.",
+        "The only certainty is in the present moment.",
+        "Living this life to the best of your ability channeling energy into your life until it's symetry.",
+        "Life is set up to be difficult, make it less difficult.",
+        "Give it power by keeping it to urself.",
+        "Nothing is better than zero regrets.",
+        "Your the first line of defense.",
+        "Why aren't you living the life you want?",
+        "Behind every successful person is a very simple lifestyle, wardrobe, and diet.",
+        "Be as great of a man as your father.",
+        "Try ordering a pizza and watching a movie or t.v show.",
+        "Take it easy on your family, friends, and caretakers.",
+        "Be the arichitect of your own happiness and well being.",
+        "The answer lies infront of you, to gain inspiration, ideas and positive outcomes from.",
+        "Live life in the present moment and focus on what is, rather than what could be.",
+        "Today is your day.",
+        "Make luck a part of the equation with a happy go-lucky attitude.",
+        "What would be a good segway?",
+        "Some success is gained at a slow and steady pace.",
+        ];
+      
       let recentIndices = []; // Initialize an empty array to hold recent indices
-      let lastCheckedTime = new Date();
-
+        
       function getRandomQuote() {
         const availableIndices = quotes.map((_, index) => index).filter(index => !recentIndices.includes(index));
         if (availableIndices.length === 0) {
           // If all quotes have been displayed, reset the list of recent indices
           recentIndices = [];
+          }
+          
+          const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+          recentIndices.push(randomIndex); // Add the index to the list of recent indices
+          const quoteWidget = document.getElementById("quote-widget");
+          quoteWidget.innerText = quotes[randomIndex];
         }
-
-        const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-        recentIndices.push(randomIndex); // Add the index to the list of recent indices
-        const quoteWidget = document.getElementById("quote-widget");
-        quoteWidget.innerText = quotes[randomIndex];
-
-        // Do not call updateChecklist here to separate the functionality
-      }
-
-      function updateChecklist() {
-        const lastCheckedElement = document.getElementById("last-checked");
-
-        // Update last checked time
-        lastCheckedTime = new Date();
-        lastCheckedElement.innerText = lastCheckedTime.toLocaleTimeString();
-
-        // Update checkbox status, time passed, and timestamp for each task
-        updateCheckboxStatus("shower-started", "shower-finished", "shower-timestamp");
-        updateCheckboxStatus("light-candle-started", "light-candle-finished", "light-candle-timestamp");
-        updateCheckboxStatus("morning-pages-started", "morning-pages-finished", "morning-pages-timestamp");
-        updateCheckboxStatus("prepare-clean-started", "prepare-clean-finished", "prepare-clean-timestamp");
-        updateCheckboxStatus("cook-eat-started", "cook-eat-finished", "cook-eat-timestamp");
-        updateCheckboxStatus("trade-invest-started", "trade-invest-finished", "trade-invest-timestamp");
-        updateCheckboxStatus("business-faq-started", "business-faq-finished", "business-faq-timestamp");
-        updateCheckboxStatus("acquisition-process-started", "acquisition-process-finished", "acquisition-process-timestamp");
-        updateCheckboxStatus("work-on-business-started", "work-on-business-finished", "work-on-business-timestamp");
-        updateCheckboxStatus("stream-planning-started", "stream-planning-finished", "stream-planning-timestamp");
-        updateCheckboxStatus("stream-fun-started", "stream-fun-finished", "stream-fun-timestamp");
-        updateCheckboxStatus("post-content-started", "post-content-finished", "post-content-timestamp");
-        updateCheckboxStatus("charge-chair-phone-started", "charge-chair-phone-finished", "charge-chair-phone-timestamp");
-      }
-
-      function updateCheckboxStatus(startedCheckboxId, finishedCheckboxId, timestampId) {
-        const startedCheckbox = document.getElementById(startedCheckboxId);
-        const finishedCheckbox = document.getElementById(finishedCheckboxId);
-        const startedLabel = document.querySelector(`label[for="${startedCheckboxId}"]`);
-        const finishedLabel = document.querySelector(`label[for="${finishedCheckboxId}"]`);
-        const timestampElement = document.getElementById(timestampId);
-
-        if (startedCheckbox.checked) {
-          // If started, update the label to show the time passed
-          const timePassed = calculateTimePassed();
-          startedLabel.innerText = `Started ${timePassed} hours ago`;
-        } else {
-          // If not started, revert to the original label
-          startedLabel.innerText = `Started `;
-        }
-
-        if (finishedCheckbox.checked) {
-          // If finished, update the label to show the time passed
-          const timePassed = calculateTimePassed();
-          finishedLabel.innerText = `Finished ${timePassed} hours ago`;
-        } else {
-          // If not finished, revert to the original label
-          finishedLabel.innerText = `Finished `;
-        }
-
-        // Update timestamp
-        const timestamp = new Date().toLocaleTimeString();
-        timestampElement.innerText = `Checked: ${timestamp} (${calculateMinutesSinceLastCheck()} minutes ago)`;
-      }
-
-      function calculateTimePassed() {
-        const currentTime = new Date();
-        const timeDiff = Math.floor((currentTime - lastCheckedTime) / (1000 * 60 * 60)); // in hours
-        return timeDiff;
-      }
-
-      function calculateMinutesSinceLastCheck() {
-        const currentTime = new Date();
-        const minutesDiff = Math.floor((currentTime - lastCheckedTime) / (1000 * 60)); // in minutes
-        return minutesDiff;
-      }
-
-      // Initial quote button setup
-      const quoteButton = document.getElementById("quote-button");
-      quoteButton.addEventListener("click", getRandomQuote);
-
-      // Update checklist every minute
-      setInterval(updateChecklist, 60000);
-    </script>
-  </body>
-</html>
+        
+        const quoteButton = document.getElementById("quote-button");
+        quoteButton.addEventListener("click", getRandomQuote);
+      </script>
+    </body>
+  </html>
