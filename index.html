@@ -53,8 +53,12 @@
     <div id="checklist">
       <h2>Task List</h2>
       <div class="task-item">
-        <label class="checkbox-label">Started <input type="checkbox" id="morning-pages-started"></label>
-        <label class="checkbox-label">Finished <input type="checkbox" id="morning-pages-finished"></label>
+        <label class="checkbox-label">Started <input type="checkbox" id="shower-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="shower-finished"></label>
+      </div>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="light-candle-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="light-candle-finished"></label>
       </div>
       <!-- Add more task items as needed -->
 
@@ -285,6 +289,7 @@
       "Make luck a part of the equation with a happy go-lucky attitude.",
       "What would be a good segway?",
       "Some success is gained at a slow and steady pace.",      ];
+
       let recentIndices = []; // Initialize an empty array to hold recent indices
       let lastCheckedTime = new Date();
 
@@ -300,7 +305,7 @@
         const quoteWidget = document.getElementById("quote-widget");
         quoteWidget.innerText = quotes[randomIndex];
 
-        updateChecklist();
+        // Do not call updateChecklist here to separate the functionality
       }
 
       function updateChecklist() {
@@ -310,23 +315,34 @@
         lastCheckedTime = new Date();
         lastCheckedElement.innerText = lastCheckedTime.toLocaleTimeString();
 
-        // Update checkbox status and time passed
-        updateCheckboxStatus("morning-pages-started");
-        updateCheckboxStatus("morning-pages-finished");
+        // Update checkbox status and time passed for each task
+        updateCheckboxStatus("shower-started", "shower-finished");
+        updateCheckboxStatus("light-candle-started", "light-candle-finished");
         // Add more tasks as needed
       }
 
-      function updateCheckboxStatus(checkboxId) {
-        const checkbox = document.getElementById(checkboxId);
-        const label = document.querySelector(`label[for="${checkboxId}"]`);
+      function updateCheckboxStatus(startedCheckboxId, finishedCheckboxId) {
+        const startedCheckbox = document.getElementById(startedCheckboxId);
+        const finishedCheckbox = document.getElementById(finishedCheckboxId);
+        const startedLabel = document.querySelector(`label[for="${startedCheckboxId}"]`);
+        const finishedLabel = document.querySelector(`label[for="${finishedCheckboxId}"]`);
 
-        if (checkbox.checked) {
-          // If checked, update the label to show the time passed
+        if (startedCheckbox.checked) {
+          // If started, update the label to show the time passed
           const timePassed = calculateTimePassed();
-          label.innerText = `Finished ${timePassed} hours ago`;
+          startedLabel.innerText = `Started ${timePassed} hours ago`;
         } else {
-          // If not checked, revert to the original label
-          label.innerText = `${checkboxId.replace("-", " ")} `;
+          // If not started, revert to the original label
+          startedLabel.innerText = `Started `;
+        }
+
+        if (finishedCheckbox.checked) {
+          // If finished, update the label to show the time passed
+          const timePassed = calculateTimePassed();
+          finishedLabel.innerText = `Finished ${timePassed} hours ago`;
+        } else {
+          // If not finished, revert to the original label
+          finishedLabel.innerText = `Finished `;
         }
       }
 
