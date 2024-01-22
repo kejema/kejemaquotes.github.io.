@@ -33,6 +33,16 @@
         text-align: center;
         color: white;
       }
+      .task-item {
+        margin-bottom: 10px;
+      }
+      .checkbox-label {
+        margin-right: 10px;
+        color: white;
+      }
+      .checkbox-label input {
+        margin-right: 5px;
+      }
     </style>
   </head>
   <body>
@@ -41,10 +51,13 @@
     </div>
     <button id="quote-button">New Quote</button>
     <div id="checklist">
-      <h2>Checklist</h2>
-      <ul id="task-list">
-        <!-- Checklist items will be added dynamically here -->
-      </ul>
+      <h2>Task List</h2>
+      <div class="task-item">
+        <label class="checkbox-label">Started <input type="checkbox" id="morning-pages-started"></label>
+        <label class="checkbox-label">Finished <input type="checkbox" id="morning-pages-finished"></label>
+      </div>
+      <!-- Add more task items as needed -->
+
       <p>Last Checked: <span id="last-checked"></span></p>
     </div>
     <script>
@@ -271,8 +284,7 @@
       "Today is your day.",
       "Make luck a part of the equation with a happy go-lucky attitude.",
       "What would be a good segway?",
-      "Some success is gained at a slow and steady pace.",      
-      ];
+      "Some success is gained at a slow and steady pace.",      ];
       let recentIndices = []; // Initialize an empty array to hold recent indices
       let lastCheckedTime = new Date();
 
@@ -292,17 +304,36 @@
       }
 
       function updateChecklist() {
-        const taskList = document.getElementById("task-list");
         const lastCheckedElement = document.getElementById("last-checked");
 
         // Update last checked time
         lastCheckedTime = new Date();
         lastCheckedElement.innerText = lastCheckedTime.toLocaleTimeString();
 
-        // Add a new task to the checklist
-        const task = document.createElement("li");
-        task.innerText = `Checked: ${lastCheckedTime.toLocaleTimeString()}`;
-        taskList.appendChild(task);
+        // Update checkbox status and time passed
+        updateCheckboxStatus("morning-pages-started");
+        updateCheckboxStatus("morning-pages-finished");
+        // Add more tasks as needed
+      }
+
+      function updateCheckboxStatus(checkboxId) {
+        const checkbox = document.getElementById(checkboxId);
+        const label = document.querySelector(`label[for="${checkboxId}"]`);
+
+        if (checkbox.checked) {
+          // If checked, update the label to show the time passed
+          const timePassed = calculateTimePassed();
+          label.innerText = `Finished ${timePassed} hours ago`;
+        } else {
+          // If not checked, revert to the original label
+          label.innerText = `${checkboxId.replace("-", " ")} `;
+        }
+      }
+
+      function calculateTimePassed() {
+        const currentTime = new Date();
+        const timeDiff = Math.floor((currentTime - lastCheckedTime) / (1000 * 60 * 60)); // in hours
+        return timeDiff;
       }
 
       // Initial quote button setup
