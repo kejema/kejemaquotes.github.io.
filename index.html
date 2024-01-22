@@ -35,6 +35,9 @@
       }
       .task-item {
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .checkbox-label {
         margin-right: 10px;
@@ -42,6 +45,10 @@
       }
       .checkbox-label input {
         margin-right: 5px;
+      }
+      .timestamp {
+        color: #999;
+        font-size: 12px;
       }
     </style>
   </head>
@@ -55,67 +62,67 @@
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="shower-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="shower-finished"></label>
-        Shower
+        <div class="timestamp" id="shower-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="light-candle-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="light-candle-finished"></label>
-        Light Candle
+        <div class="timestamp" id="light-candle-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="morning-pages-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="morning-pages-finished"></label>
-        Morning Pages
+        <div class="timestamp" id="morning-pages-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="prepare-clean-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="prepare-clean-finished"></label>
-        Prepare, Clean, Organize, Research & Implement
+        <div class="timestamp" id="prepare-clean-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="cook-eat-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="cook-eat-finished"></label>
-        Cook / Eat / Drink
+        <div class="timestamp" id="cook-eat-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="trade-invest-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="trade-invest-finished"></label>
-        Trade / Invest
+        <div class="timestamp" id="trade-invest-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="business-faq-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="business-faq-finished"></label>
-        Business FAQ
+        <div class="timestamp" id="business-faq-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="acquisition-process-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="acquisition-process-finished"></label>
-        Acquisition Process
+        <div class="timestamp" id="acquisition-process-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="work-on-business-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="work-on-business-finished"></label>
-        Work on business (The Process)
+        <div class="timestamp" id="work-on-business-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="stream-planning-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="stream-planning-finished"></label>
-        Stream Planning
+        <div class="timestamp" id="stream-planning-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="stream-fun-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="stream-fun-finished"></label>
-        Stream - Advocate, Have Fun With Friends & Guildies
+        <div class="timestamp" id="stream-fun-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="post-content-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="post-content-finished"></label>
-        Post Content
+        <div class="timestamp" id="post-content-timestamp"></div>
       </div>
       <div class="task-item">
         <label class="checkbox-label">Started <input type="checkbox" id="charge-chair-phone-started"></label>
         <label class="checkbox-label">Finished <input type="checkbox" id="charge-chair-phone-finished"></label>
-        Charge Chair, Phone
+        <div class="timestamp" id="charge-chair-phone-timestamp"></div>
       </div>
 
       <p>Last Checked: <span id="last-checked"></span></p>
@@ -371,27 +378,28 @@
         lastCheckedTime = new Date();
         lastCheckedElement.innerText = lastCheckedTime.toLocaleTimeString();
 
-        // Update checkbox status and time passed for each task
-        updateCheckboxStatus("shower-started", "shower-finished");
-        updateCheckboxStatus("light-candle-started", "light-candle-finished");
-        updateCheckboxStatus("morning-pages-started", "morning-pages-finished");
-        updateCheckboxStatus("prepare-clean-started", "prepare-clean-finished");
-        updateCheckboxStatus("cook-eat-started", "cook-eat-finished");
-        updateCheckboxStatus("trade-invest-started", "trade-invest-finished");
-        updateCheckboxStatus("business-faq-started", "business-faq-finished");
-        updateCheckboxStatus("acquisition-process-started", "acquisition-process-finished");
-        updateCheckboxStatus("work-on-business-started", "work-on-business-finished");
-        updateCheckboxStatus("stream-planning-started", "stream-planning-finished");
-        updateCheckboxStatus("stream-fun-started", "stream-fun-finished");
-        updateCheckboxStatus("post-content-started", "post-content-finished");
-        updateCheckboxStatus("charge-chair-phone-started", "charge-chair-phone-finished");
+        // Update checkbox status, time passed, and timestamp for each task
+        updateCheckboxStatus("shower-started", "shower-finished", "shower-timestamp");
+        updateCheckboxStatus("light-candle-started", "light-candle-finished", "light-candle-timestamp");
+        updateCheckboxStatus("morning-pages-started", "morning-pages-finished", "morning-pages-timestamp");
+        updateCheckboxStatus("prepare-clean-started", "prepare-clean-finished", "prepare-clean-timestamp");
+        updateCheckboxStatus("cook-eat-started", "cook-eat-finished", "cook-eat-timestamp");
+        updateCheckboxStatus("trade-invest-started", "trade-invest-finished", "trade-invest-timestamp");
+        updateCheckboxStatus("business-faq-started", "business-faq-finished", "business-faq-timestamp");
+        updateCheckboxStatus("acquisition-process-started", "acquisition-process-finished", "acquisition-process-timestamp");
+        updateCheckboxStatus("work-on-business-started", "work-on-business-finished", "work-on-business-timestamp");
+        updateCheckboxStatus("stream-planning-started", "stream-planning-finished", "stream-planning-timestamp");
+        updateCheckboxStatus("stream-fun-started", "stream-fun-finished", "stream-fun-timestamp");
+        updateCheckboxStatus("post-content-started", "post-content-finished", "post-content-timestamp");
+        updateCheckboxStatus("charge-chair-phone-started", "charge-chair-phone-finished", "charge-chair-phone-timestamp");
       }
 
-      function updateCheckboxStatus(startedCheckboxId, finishedCheckboxId) {
+      function updateCheckboxStatus(startedCheckboxId, finishedCheckboxId, timestampId) {
         const startedCheckbox = document.getElementById(startedCheckboxId);
         const finishedCheckbox = document.getElementById(finishedCheckboxId);
         const startedLabel = document.querySelector(`label[for="${startedCheckboxId}"]`);
         const finishedLabel = document.querySelector(`label[for="${finishedCheckboxId}"]`);
+        const timestampElement = document.getElementById(timestampId);
 
         if (startedCheckbox.checked) {
           // If started, update the label to show the time passed
@@ -410,12 +418,22 @@
           // If not finished, revert to the original label
           finishedLabel.innerText = `Finished `;
         }
+
+        // Update timestamp
+        const timestamp = new Date().toLocaleTimeString();
+        timestampElement.innerText = `Checked: ${timestamp} (${calculateMinutesSinceLastCheck()} minutes ago)`;
       }
 
       function calculateTimePassed() {
         const currentTime = new Date();
         const timeDiff = Math.floor((currentTime - lastCheckedTime) / (1000 * 60 * 60)); // in hours
         return timeDiff;
+      }
+
+      function calculateMinutesSinceLastCheck() {
+        const currentTime = new Date();
+        const minutesDiff = Math.floor((currentTime - lastCheckedTime) / (1000 * 60)); // in minutes
+        return minutesDiff;
       }
 
       // Initial quote button setup
