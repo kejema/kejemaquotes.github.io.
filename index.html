@@ -1,336 +1,145 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Quote Widget</title>
-    <style>
-      body {
-        background-color: #0e0e0e;
-      }
-      #quote-widget {
-        font-size: 36px;
-        font-style: italic;
-        text-align: center;
-        color: rgb(235, 232, 232);
-        background-color: rgb(46, 46, 46);
-        padding: 20px;
-        margin: 50px auto;
-        max-width: 600px;
-      }
-      #quote-button {
-        display: block;
-        margin: 0 auto;
-        font-size: 20px;
-        padding: 10px 20px;
-        background-color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="quote-widget">
+<head>
+<meta charset="UTF-8">
+<title>Quote Widget</title>
+<style>
+body {
+background-color: #0e0e0e;
+display: flex;
+justify-content: space-between;
+padding: 20px;
+}
+.quote-box {
+font-size: 24px;
+font-style: italic;
+text-align: center;
+color: rgb(235, 232, 232);
+background-color: rgb(46, 46, 46);
+padding: 20px;
+margin: 20px;
+max-width: 400px;
+}
+.quote-button {
+display: block;
+margin: 0 auto;
+font-size: 20px;
+padding: 10px 20px;
+background-color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="left-column">
+<div class="quote-box">
+<h2>Family and friends</h2>
+<div class="quote-widget">
+Click for a random quote
+</div>
+<button class="quote-button">New Quote</button>
+</div>
+
+```
+  <div class="quote-box">
+    <h2>Relationships and dating</h2>
+    <div class="quote-widget">
       Click for a random quote
     </div>
-    <button id="quote-button">New Quote</button>
-    <script>
-      const quotes = [
-        "You have to believe in something for it to work out for you.",
-        "The hardest place to be in life is in times of uncertainty, stress, and being overwhelmed.",
-        "Smile through the sadness. Life by Design was never easy to begin with and there is moments of sadness, happiness, and Triumphs along the way.",
-        "when equal forces fight there's no good that can come from it, only destruction on both ends.",
-        "Expression is the language of the soul.",
-        "There is always a Who, What, When, Where, Why, and How in every moment of your life.",
-        "You are the resistance that stops you from living fully.",
-        "My best life is locked by a key that everyone else holds.",
-        "When somebody believes in something affirm their beliefs, because their beliefs are everything to be cherished.",
-        "Home is where you make it!! Remind yourself that life's true essence lies in the places, actions, and people that we hold dear.",
-        "Create your world each new day!",
-        "The difference between good and evil is creation and destruction.",
-        "Always think about the greater things.",
-        "If your not happy with just a little you'll never be happy at all.",
-        "I love dreams, it's like two field days in one.",
-        "To deny the existence in God, is to deny the power within each of us, which was granted to us by the powers that be.",
-        "See the bigger picture, you gotta get there somehow.",
-        "Anything you do, you do today.",
-        "Love is just an obsession, true love is respect, trust and empathy.",
-        "We are in control of our own lives, if you don't like something then change it.",
-        "Live a life of independence!",
-        "It's essential to embrace difficult times and to know that our small progresses matter more than anything.",
-        "Some progress is better than none.",
-        "Live through another person for a change.",
-        "You can't spell independence without eeee.",
-        "Time is not refundable, use it with intention.",
-        "Some people will see you as lesser or greater and if your lucky they will see you as an equal.",
-        "A wise man really only knows that nothing is for certain.",
-        "Accept the fact that sometimes there's nothing that you can do.",
-        "Just be glad your luck worked out and just try to make it last.",
-        "Helping someone, will change the world for them.",
-        "Start where you are at but always remain in the discovery phase.",
-        "The first step is self help, knowing that you can give yourself a good piece of advice and follow through on it.",
-        "Angels can fly because they take themselves lightly.",
-        "Be the cream of the crop that rise to the top.",
-        "Embrace the unknown, embrace the discomfort of not knowing",
-        "The song gets better if you keep listening, just like life.",
-        "It's not about how you feel but how you react to your feelings.",
-        "Your work is your world.",
-        "Your inner world is reflected into the outer world.",
-        "Overcoming personal weaknesses is more challenging and rewarding than achieving any external victory.",
-        "Not much is needed to be happy.",
-        "Can you take it higher?",
-        "Silence is a form of power that creates a bridge to understanding.",
-        "Change the way you look at things.",
-        "Sun rises are a great way to start any day.",
-        "What would you regret not doing today?",
-        "Stop trying to just see the life you could be living, and instead just live it as you see it.",
-        "What should you be angry about?",
-        "It all starts from nothing and we make it into something.",
-        "It's a harsh world, with harsh realities, and serious people in a time constraint.",
-        "Live in an artful way with more intention in everything you do.",
-        "Life is about living a unique experience.",
-        "Respect for ourselves guides our morals; respect for others guides our manners. Respecting the inherent value in everything serves as the starting point for all meaningful endeavors.",
-        "Life's beauty is never fully defined, and it would be a sin to try and give life that limitation.",
-        "Who do you want to be? The person of power? The one who can see clearly? The one who who can get it done? You can't always be them all.",
-        "If you don't play the game of life you lose. The greatest game in life is creating the life you want and each day is a new save slot.",
-        "Reassure yourself because you are all that you have.",
-        "You are your body, your thoughts, and your feelings. What you do, the things around you, and the experiences you have will all shape who you become. The wealth, influence, and connections you cultivate determine how quickly and effectively you develop into your future self.",
-        "How will this make the world a better place?",
-        "You gotta make changes for it to happen.",
-        "If you can't take care of yourself how are you going to help your friends, family, neighbors and ultimately the world? It's in everybody's best interest for individuals to take care of themselves.",
-        "Value your intelligence.",
-        "Focus on the possibilities.",
-        "Just keep it on the real.",
-        "Express yourself from the soul level.",
-        "Be around the people that give your world assurance and brings out the best in you.",
-        "Bet on yourself. Define your self worth, before the world does.",
-        "How far will you go.",
-        "It's easier to fall from grace than to live a purely chaotic lifestyle.",
-        "All things start from somewhere every day.",
-        "Measure your accountability with yesterdays successes.",
-        "See yourself driving.",
-        "Life is too short not to enjoy what you have and want out of life.",
-        "Do the best with what you've got.",
-        "All you have to do is apply yourself one step at a time.",
-        "Focus on the good outcomes.",
-        "Never paint the full picture of Life. Everything could be at most an inspiration, you can not be the artist of Gods design.",
-        "The moment you stop caring about others opinions, is when you learn to trust yourself with your future.",
-        "The worst position to find yourself in is with no family, friends, time, or money.",
-        "Some people will make that sacrifice for you, but then you have to sacrifice yourself for them too.",
-        "Until you learn to see yourself, you cant love another.",
-        "Blessed is thee who is kind and balanced. Who's honoring their world. Seeing, speaking, and listening with the reflection of their love & mindful of their spirit. Blessings are a fruit when aligning our intentions with our actions.",
-        "Above anything, they will admire you for your ambitions.",
-        "Love the chance, of living a life worth living.",
-        "Be happy with what you got.",
-        "It's okay to feel powerless at times, but it's not okay to do nothing about it.",
-        "Focus on what's useful to you.",
-        "Fight for what your capable of doing.",
-        "Always be polite.",
-        "There's always something to learn do or say, so teach what you learn.",
-        "The price of ignorance is never realised until it's too late.",
-        "Some people know more and do certain things better than others, so own up to your life, your opportunities and chance to live a full life each day.",
-        "Where does the time go? Fly like the arrow of God.",
-        "It's always a perfect time to keep going after you've started.",
-        "Be outside your box.",
-        "Let every step be a celebration of existence.",
-        "Blank spaces on your calendar is the devils playground.",
-        "If you wanna be great, try counting your blessings.",
-        "Opportunities multiply if siezed, and die if neglected.",
-        "Never push things, instead accept what happens as you move forward.",
-        "Focus on your mind, body, spirit, and what you can make consistent.",
-        "Talent hits a target no one else can hit, and genius hits a target no one else can see.",
-        "Reach for the sky cause tomorrow may never come.",
-        "Your body does the easy job of living, and your mind does the hard work of life.",
-        "Perseverance is a culmination of your values and is truly a fine art.",
-        "Be stuck in survival, it's a natural state.",
-        "Success boils down to just doing the most obvious thing, for an extended periods of time.",
-        "Never stop providing meaning.",
-        "Focus on what boosts your energy.",
-        "Steer your ship.",
-        "Declare war on your actions every day.",
-        "Be the writer, artist, actor and director.",
-        "The only limit to your potential is the one you set for yourself.",
-        "Be the champion of your story.",
-        "Shape how you're percieved by others.",
-        "Outlearn, Outwork, Outlast, Contemplate, & Reminisce.",
-        "Life is abundant, what would the abundance do for you?",
-        "Magic is the ability to change your reality according to your will.",
-        "You can count the seeds in the Apple, but you can't count the Apples in the seed.",
-        "What do you want your efforts to look like?",
-        "Define your pain before it defines you.",
-        "If you could go the extra distance.",
-        "They can't keep a good dog down.",
-        "If you stay ready then you don't have to get ready.",
-        "Time isn't what's valuable, it's our perception of it.",
-        "The harder you try the worse it gets.",
-        "Prepare for the day ahead and focus on the process.",
-        "Everyone should live by a code and actuate what they can see by it.",
-        "The only path to success is the belief that everything gets better over time.",
-        "Whatever tomorrow brings, choose water over wine.",
-        "Don't let it all be for nothing.",
-        "The end is never really a means.",
-        "Find your place of tranquility.",
-        "It's only your fault if you let something happen.",
-        "Only blame yourself if you do not see more than one path.",
-        "Double-Quick, only now is for certain.",
-        "Try to turn the tide of today.",
-        "Recall what you have learned.",
-        "Do it if your going to.",
-        "Life was created with each of your needs in mind.",
-        "Act like someone is working to taking it all away.",
-        "Upgrade your environment, because your environment upgrades you.",
-        "Keep it long and sweet.",
-        "The more you learn and practice, the more you grow.",
-        "Commit to the dream.",
-        "Accept your dreams as possibilities, know that even if you are caught off guard you are adequate and can still make a small step of progress.",
-        "Be able to live off of your accomplishments.",
-        "Become the motivation.",
-        "May whatever you ask for in confidence be granted to you.",
-        "Creativity is taking something that normally doesn't belong and making it fit perfectly with whatever you applied it too.",
-        "What is relevant to what your currently doing?",
-        "The mind is a machine to reach the light.",
-        "Travel the world after it's all said and done.",
-        "Seek discomfort and set your own bar.",
-        "Hold onto your hungers instead of ambitions.",
-        "This is it, say goodbye to the ever changing chapters of your life.",
-        "Sometimes when things are falling apart they are actually falling into place.",
-        "To be unacquainted with one's character is to deny oneself the richness of authenticity.",
-        "The calmer you are, the more clarity you have.",
-        "Remind others of who you are, and never let the world define you.",
-        "There's a whole world out there to explore.",
-        "Life is a one-time offer each day.",
-        "Your not a failure until you quit.",
-        "Stretch yourself beyond your dreams.",
-        "You must always find a way. Did you do enough?",
-        "Your direction is more important than your speed.",
-        "To be the best, you got to be able to tame your worst.",
-        "Make a habit of winning the day.",
-        "Wander in darkness to find the light. Can you see yourself yet?",
-        "Be strong because you endured.",
-        "No matter what it is that you do, there will always be a measure of pain, make it worth it.",
-        "As long as you tried, so be it.",
-        "If you know what you want, why can't you have it?",
-        "The tougher things you do, the more confidence you'll have.",
-        "Trust the process, everything happens at the right time.",
-        "Make life an easier challenge on you, because life is one great big challenge.",
-        "The root of all suffering, is the attachment we have.",
-        "Accept what you cannot change. What have they learned?",
-        "No one will live out your life for you even though you need help to live.",
-        "If you can't control your life and mind, something else will.",
-        "I come from a place where all potentials and possibilities exist.",
-        "Become an independent person that gets a lot done by themself.",
-        "Carry yourself through their eyes if thats what it takes.",
-        "The Imagination is to be trained, to do real magic.",
-        "If you don't know how to ask, then you wont know how to get.",
-        "Do what you love really well.",
-        "Develope a discipline like no other.",
-        "Only fix what needs fixin.",
-        "Flip the script and be your own role model.",
-        "Your entitled to the work, not the fruits of the work.",
-        "'Perfection can also be spealt 'Paralysis, just do it at your pace.",
-        "The reason people work so hard is because there's so much to work for.",
-        "Every day your either losing ground or gaining ground.",
-        "It takes everything to stand alone.",
-        "If you quit before or after, then you have strayed from becoming the champion, always.",
-        "If you think the price of success is to high, wait until you see the check of regret.",
-        "All you have is the time you spend alone or share together, so pick the one for the moment.",
-        "The calm must come before the storm.",
-        "there is no room for trepidation in our choices.",
-        "Gaining something is maintaining it.",
-        "Everyday is a new day to start off better.",
-        "If you can return the favor, do it.",
-        "Prove to everyone they don't know you.",
-        "I want to be able to go to bed tonight and feel like my day was worth it.",
-        "You learn more from pain, than you ever will from any pleasure.",
-        "Be with the ones who give you less worries.",
-        "If you really want to, then why aren't you? You must be relentless.",
-        "Rhyme with more reason more often and never stop providing a deeper meaning",
-        "Breathe into it.",
-        "Sometimes we have to tell ourselves that everything we're going to do in life were actually going to do.",
-        "You are more than you think you are.",
-        "It all wasn't meant to last, so believe in the extraordinary.", 
-        "It's time to wake the fuck up, give your pain and suffering a purpose and know that every challenge you face is a stepping stone to success.",
-        "Push your limits from yesterday, that is true accountability.",
-        "It's time to create your future.",
-        "The only lasting beauty is the beauty of the heart, mind and soul.",
-        "If you try something and it doesn't work, you try something else.",
-        "Your lessons are repeated until they are learned.",
-        "Do what everything does, keep movin.",
-        "Let others feel like they won the lottery when you enter their world.",
-        "He will bless those who blesses others, and attempts to turn the world into a heaven on earth.",
-        "Your energy is the lightning that powers your life.",
-        "Give yourself the energy and willpower to do what you need to do.",
-        "Plan all the way to the end. Who are you right now?",
-        "What you resist, persists and grows stronger.",
-        "It doesn't have to be perfect, it just has to come from the right place.",
-        "May the sunlight welcome you with a warm smile and open arms.",
-        "Kindness is a language that the deaf can hear and the blind can see.",
-        "Happiness is not the same as a long lasting fulfillment, true happiness takes suffering, pain, time and effort.",
-        "You can never express too much gratitude for the life that you live.",
-        "Out of the thousands of people you have influenced in your life positively, and you are too shy to put yourself out there?",
-        "Earn your dopamine through this struggle we call life.",
-        "Having a sense of purpose and why you live will give you the strength and resilience you need to endure any hardship in life.",
-        "There's only so much of life to experience, be patient with yourself and take your time.",
-        "Cheap thrills is neglect to true fulfillment.",
-        "Even after achieving a profound insight, one must continue with life's daily tasks.",
-        "Recognize your limits and you will be wiser than ever.",
-        "As you sow your actions, so shall you reap the outcome.",
-        "Align personal desires with the greater good.",
-        "As you walk through the valley of the shadow of death, take a look at your life and realize there's nothing left, you have nothing.",
-        "What will happen if you dont do it?",
-        "You should get angry about everything in your life to the point you actually do something about it.",
-        "How can you improve this at all?",
-        "Poverty is the feeling you have nothing left to give to yourself or others.",
-        "Death is not in the future, it is in the moment.",
-        "Once you become fearless, life becomes limitless.",
-        "Be the person who was successful despite your unique challenges that you faced.",
-        "If you want to have a great life you have to make great choices.",
-        "What's all the work you could be doing?",
-        "Realize the effects of the choices you make.",
-        "Emulate others expressions to better understand them.",
-        "Work harder on yourself than you do on your job.",
-        "Persistence and determination are omnipotent qualities that nobody in this world can match, not a genius, talented person, or even well educated people.",
-        "The only certainty is in the present moment.",
-        "Living this life to the best of your ability channeling energy into your life until it's symetry.",
-        "Life is set up to be difficult, make it less difficult.",
-        "Give it power by keeping it to urself.",
-        "Life is an opportunity to speak with God, use it.",
-        "But tell me, did the wind sweep you off your feet? did you finally get the chance to dance along the light of day?",
-        "Nothing is better than zero regrets.",
-        "Your the first line of defense.",
-        "Why aren't you living the life you want?",
-        "Behind every successful person is a very simple lifestyle, wardrobe, and diet.",
-        "Be as great as your ancestors.",
-        "You get what you give.",
-        "Don't be addicted to your problems, that's no way to live life.",
-        "Be the arichitect of your own happiness and well being.",
-        "The answer lies infront of you, to gain inspiration, ideas and positive outcomes from.",
-        "Knowledge isn't power, it's making smart choices with what we know that is powerful.",
-        "Live life in the present moment and focus on what is, rather than what could be.",
-        "Every day is your day to not regret the life you live.",
-        "The habits you build while doing the right things is what does most of the work in life.",
-        "Stack the odds in your favor, make luck and guaranteed part of your life's equation with a happy-go-lucky attitude.",
-        "What would be a good segway?",
-        "Some success is gained at a slow and steady pace.",
-        ];
-      
-      let recentIndices = []; // Initialize an empty array to hold recent indices
-        
-      function getRandomQuote() {
-        const availableIndices = quotes.map((_, index) => index).filter(index => !recentIndices.includes(index));
-        if (availableIndices.length === 0) {
-          // If all quotes have been displayed, reset the list of recent indices
-          recentIndices = [];
-          }
-          
-          const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-          recentIndices.push(randomIndex); // Add the index to the list of recent indices
-          const quoteWidget = document.getElementById("quote-widget");
-          quoteWidget.innerText = quotes[randomIndex];
-        }
-        
-        const quoteButton = document.getElementById("quote-button");
-        quoteButton.addEventListener("click", getRandomQuote);
-      </script>
-    </body>
-  </html>
+    <button class="quote-button">New Quote</button>
+  </div>
+
+  <div class="quote-box">
+    <h2>Fun and Recreation</h2>
+    <div class="quote-widget">
+      Click for a random quote
+    </div>
+    <button class="quote-button">New Quote</button>
+  </div>
+
+  <div class="quote-box">
+    <h2>Physical Health</h2>
+    <div class="quote-widget">
+      Click for a random quote
+    </div>
+    <button class="quote-button">New Quote</button>
+  </div>
+</div>
+
+<div class="right-column">
+  <div class="quote-box">
+    <h2>Money and finances</h2>
+    <div class="quote-widget">
+      Click for a random quote
+    </div>
+    <button class="quote-button">New Quote</button>
+  </div>
+
+  <div class="quote-box">
+    <h2>Personal development</h2>
+    <div class="quote-widget">
+      Click for a random quote
+    </div>
+    <button class="quote-button">New Quote</button>
+  </div>
+
+  <div class="quote-box">
+    <h2>Your environment</h2>
+    <div class="quote-widget">
+      Click for a random quote
+    </div>
+    <button class="quote-button">New Quote</button>
+  </div>
+
+  <div class="quote-box">
+    <h2>Career or business</h2>
+    <div class="quote-widget">
+      Click for a random quote
+    </div>
+    <button class="quote-button">New Quote</button>
+  </div>
+</div>
+
+<script>
+  const quotes = [
+    // You can manually add quotes here with their respective categories
+    { category: "Family and friends", quote: "Be as great as your ancestors." },
+    { category: "Relationships and dating", quote: "Love is just an obsession by itself, true love is respect, trust and empathy." },
+    { category: "Family and friends", quote: "Above anything people will admire you for your ambitions." },
+    { category: "Relationships and dating", quote: "Be the champion of your story." },
+    {}
+    // Add more quotes for other categories in the same format
+  ];
+
+  let recentIndices = []; // Initialize an empty array to hold recent indices
+
+  function getRandomQuote(category, index) {
+    const availableQuotes = quotes.filter(quote => quote.category === category);
+    const availableIndices = availableQuotes.map((_, index) => index).filter(index => !recentIndices.includes(index));
+
+    if (availableIndices.length === 0) {
+      // If all quotes have been displayed, reset the list of recent indices
+      recentIndices = [];
+    }
+
+    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+    recentIndices.push(randomIndex); // Add the index to the list of recent indices
+    const quoteWidget = document.querySelectorAll(".quote-widget")[index];
+    quoteWidget.innerText = availableQuotes[randomIndex].quote;
+  }
+
+  const quoteButtons = document.querySelectorAll(".quote-button");
+  quoteButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const category = button.parentElement.querySelector("h2").textContent;
+      getRandomQuote(category, index);
+    });
+  });
+</script>
+
+```
+
+</body>
+</html>
